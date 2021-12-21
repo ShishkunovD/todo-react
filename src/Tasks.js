@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-
-function Tasks({task, isCheck}) {
+const Tasks = ({task, isCheck}) => {
   const [checkBox, setCheckBox] = useState(isCheck);
 
   const changeCheck = () => {
@@ -10,14 +9,11 @@ function Tasks({task, isCheck}) {
 
   return(
     <div className="task-container">
-      <input type='checkbox'  defaultChecked={isCheck} onChange={() => changeCheck()} /> 
+      <input type='checkbox' defaultChecked={isCheck} onChange={() => changeCheck()} /> 
       { checkBox ?
-        <span  className = "throught" >{task}</span> :
-        <span>{task}</span>
+        <div className="throught">{task}</div> :
+        <div>{task}</div>
       }
-      <div >
-        <img />
-      </div>
     </div>
   )
 }

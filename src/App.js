@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import Tasks from './Tasks';
 
-function App() {
+const App = () => {
   const [input, setInput] = useState('');
   const [allTask, setAllTask] = useState([]);
 
@@ -26,7 +26,7 @@ function App() {
         <input className="input-task" onChange={(e) => changeInput(e)} value={input} />
         <button className="btn-task" onClick={() => addButton()}>Добавить</button>
       </div>
-      {allTask.length > 0 && allTask.map((item, index) => <Tasks  key={`Task-${index}`} task={item.task} isCheck={item.isCheck}/>)}
+      {allTask.map((item, index) => <Tasks key={`Task-${index}`} task={item.task} isCheck={item.isCheck}/>)}
     </div>
   );
 }
