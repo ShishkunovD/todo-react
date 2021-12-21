@@ -5,19 +5,19 @@ import Tasks from './Tasks';
 const App = () => {
   const [input, setInput] = useState('');
   const [allTask, setAllTask] = useState([]);
-  let id = 0;
 
   const changeInput = (event) => {
     setInput(event.target.value);
   }
 
   const addButton = () => {
+    let id = (new Date()).getTime().toString(36) + Math.random().toString(36).slice(2);
     const newTask = {
-      ident: id++,
+      ident: id,
       task: input,
       isCheck: false
     };  
-    allTask.push(newTask)
+    allTask.push(newTask);
     setAllTask([...allTask]);
     setInput('');
   }
