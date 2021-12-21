@@ -5,6 +5,7 @@ import Tasks from './Tasks';
 const App = () => {
   const [input, setInput] = useState('');
   const [allTask, setAllTask] = useState([]);
+  let id = 0;
 
   const changeInput = (event) => {
     setInput(event.target.value);
@@ -12,6 +13,7 @@ const App = () => {
 
   const addButton = () => {
     const newTask = {
+      ident: id++,
       task: input,
       isCheck: false
     };  
@@ -26,7 +28,7 @@ const App = () => {
         <input className="input-task" onChange={(e) => changeInput(e)} value={input} />
         <button className="btn-task" onClick={() => addButton()}>Добавить</button>
       </div>
-      {allTask.map((item, index) => <Tasks key={`Task-${index}`} task={item.task} isCheck={item.isCheck}/>)}
+      {allTask.map(item => <Tasks key={`Task-${item.ident}`} task={item.task} isCheck={item.isCheck}/>)}
     </div>
   );
 }
