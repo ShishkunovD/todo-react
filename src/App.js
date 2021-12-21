@@ -1,24 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+const App = () => {
+  const [input, setInput] = useState('');
+  const [allTask, setAllTask] = useState([]);
+
+  const changeInput = (e) => {
+    setInput(e.target.value);
+  }
+
+  const addButton = () => {
+    const newTask = {
+      task: input,
+      isCheck: false
+    };
+    allTask.push(newTask);
+    setAllTask([...allTask]);
+    setInput('');
+  }
+
+  const changeCheckbox = (id) => {
+    allTask[id].isCheck = !allTask[id].isCheck;
+    setAllTask([...allTask]);
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <div></div>
+    <div className="container">
+      <div className="add-task">
+        <input className="input-task" onChange={(e) => changeInput(e)} value={input} />
+        <button className="btn-task" onClick={() => addButton()}>Добавить</button>
+      </div>
+      {allTask.map((item, index) => <div key={index}>
+        <input type="checkbox" defaultChecked={item.isCheck} onChange={() => changeCheckbox(index)}/>
+        <span className={item.isCheck ? 'throught': ''}>{item.task}</span>
+      </div>)
+      }
     </div>
   );
 }
