@@ -39,7 +39,10 @@ const App = () => {
       {allTask.map((item, index) => <div key={index} className="task-container">
         <input type="checkbox" defaultChecked={item.isCheck} onChange={() => changeCheckbox(index)}/>
         <span className={item.isCheck ? 'throught': ''}>{item.task}</span>
-        <span ><img src={basket} className="basket" alt="basket" onClick={() => deleteTask(index)}/></span>
+        <span>
+          <img src={basket} className="basket" alt="basket" 
+          onClick={() => deleteTask(index)}/>
+        </span>
       </div>)
       }
     </div>
