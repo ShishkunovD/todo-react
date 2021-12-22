@@ -33,13 +33,28 @@
 
 .task-container {
   display: flex;
-  width: 30%;
+  justify-content: space-between;
+  width: 69%;
   margin-top: 30px;
+}
+
+.main-container {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-conatiner {
+  display: flex;
 }
 
 .basket, .pancel {
   width: 16px;
   height: 16px;
+}
+
+.wrapper {
+  width:100%;
 }
 
 .hide {

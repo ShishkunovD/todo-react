@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import basket from './basket.svg';
+import Task from './Task';
 
 const App = () => {
   const [input, setInput] = useState('');
@@ -29,6 +29,11 @@ const App = () => {
     allTask.splice(index, 1);
     setAllTask([...allTask]);
   }
+
+  const saveEditing = (value, index) => {
+    allTask[index].task = value;
+    setAllTask([...allTask]);
+  }
   
   return (
     <div className="container">
@@ -36,18 +41,14 @@ const App = () => {
         <input className="input-task" onChange={(e) => changeInput(e)} value={input} />
         <button className="btn-task" onClick={() => addButton()}>Добавить</button>
       </div>
-      {allTask.map((item, index) => <div key={index} className="task-container">
-        <input type="checkbox" defaultChecked={item.isCheck} onChange={() => changeCheckbox(index)}/>
-        <span className={item.isCheck ? 'throught': ''}>{item.task}</span>
-        <span>
-          <img 
-          src={basket}
-          className="basket"
-          alt="basket" 
-          onClick={() => deleteTask(index)}
-          />
-        </span>
-      </div>)
+      {allTask.map((item, index) => <Task 
+        key={index} 
+        index={index} 
+        item={item} 
+        deleteTask={deleteTask} 
+        changeCheckbox={changeCheckbox} 
+        saveEditing={saveEditing}/>
+      )
       }
     </div>
   );
