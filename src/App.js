@@ -40,8 +40,12 @@ const App = () => {
         <input type="checkbox" defaultChecked={item.isCheck} onChange={() => changeCheckbox(index)}/>
         <span className={item.isCheck ? 'throught': ''}>{item.task}</span>
         <span>
-          <img src={basket} className="basket" alt="basket" 
-          onClick={() => deleteTask(index)}/>
+          <img 
+          src={basket}
+          className="basket"
+          alt="basket" 
+          onClick={() => deleteTask(index)}
+          />
         </span>
       </div>)
       }
