@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Edit from './Edit';
+import Main from './Main';
 import basket from './basket.svg';
 import pancel from './pancel.png';
 
@@ -26,32 +28,28 @@ const Task = ({item, changeCheckbox, index, deleteTask, saveEditing}) => {
   
   return (
     <div className="task-container">
-      <div>
-        {changeState && 
-        <div className="edit-conatiner" >
-          <button onClick={() => cancelEditing()}>Отмена</button>
-          <input onChange={(e) => changeInput(e)} value={editInput} className="inputEditing"/>
-          <button onClick={() => {saveEditing(editInput, index); renderSave()}}>Сохранить</button>
-        </div>}
-      </div>
 
-      <div className="wrapper">
-        {!changeState && 
-        <div className="main-container">
-          <div className="left-block">
-            <input type="checkbox" checked={isCheck} onChange={() => changeCheckbox(index)}/>
-            <span className={isCheck ? 'throught task': 'task'}>{task}</span>
-          </div>
-          <span>
-            <img 
-              src={pancel}
-              className="pancel"
-              alt="pancel"
-              onClick={() => editTask(index)} 
-            />
-          </span>
-        </div>}
-      </div>
+      {changeState && 
+        <Edit 
+          cancelEditing={cancelEditing}
+          changeInput={changeInput}
+          saveEditing={saveEditing}
+          renderSave={renderSave}
+          editInput={editInput} 
+          index={index}
+        />
+      }
+
+      {!changeState && 
+        <Main 
+          isCheck={isCheck}
+          changeCheckbox={changeCheckbox}
+          index={index}
+          task={task}
+          pancel={pancel}
+          editTask={editTask}
+        />
+      }
 
       <span>
         <img
