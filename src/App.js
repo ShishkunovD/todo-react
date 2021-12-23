@@ -9,7 +9,6 @@ const App = () => {
 
   useEffect(() => {
     axios.get('http://localhost:8000/allTasks').then(res => {
-      res.data.data.sort((a, b) => a.isCheck > b.isCheck ? 1 : a.isCheck < b.isCheck ? -1 : 0);
       setAllTask(res.data.data);
     });
   }, [])
@@ -29,7 +28,6 @@ const App = () => {
     await axios.patch(`http://localhost:8000/updateTask?id=${item._id}`, {
       isCheck: !item.isCheck
     }).then(res => {
-      res.data.data.sort((a, b) => a.isCheck > b.isCheck ? 1 : a.isCheck < b.isCheck ? -1 : 0);
       setAllTask(res.data.data);
     });
   }
@@ -48,6 +46,7 @@ const App = () => {
     });
   }
   
+  allTask.sort((a, b) => a.isCheck > b.isCheck ? 1 : a.isCheck < b.isCheck ? -1 : 0);
    return (
     <div className="container">
       <div className="add-task">
