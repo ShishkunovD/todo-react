@@ -22,8 +22,11 @@ const App = () => {
 
   const changeCheckbox = (id) => {
     allTask[id].isCheck = !allTask[id].isCheck;
+    sortAllTask();
     setAllTask([...allTask]);
   }
+
+  const sortAllTask = () => allTask.sort((a, b) => a.isCheck > b.isCheck ? 1 : a.isCheck < b.isCheck ? -1 : 0);
 
   const deleteTask = (index) => {
     allTask.splice(index, 1);
