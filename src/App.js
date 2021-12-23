@@ -1,47 +1,57 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Task from './Task';
+import axios from 'axios';
 
 const App = () => {
-  const [input, setInput] = useState('');
   const [allTask, setAllTask] = useState([]);
+  const [input, setInput] = useState('');
 
-  const changeInput = (e) => {
-    setInput(e.target.value);
-  }
+  useEffect(() => {
+    axios.get('http://localhost:8000/allTasks').then(res => {
+      res.data.data.sort((a, b) => a.isCheck > b.isCheck ? 1 : a.isCheck < b.isCheck ? -1 : 0);
+      setAllTask(res.data.data);
+    });
+  }, [])
 
-  const addButton = () => {
-    const newTask = {
-      task: input,
+  const addButton = async () => {
+    await axios.post('http://localhost:8000/createTask', {
+      text: input,
       isCheck: false
-    };
-    allTask.push(newTask);
-    setAllTask([...allTask]);
-    setInput('');
+    }).then(res => {
+      setInput('');
+      allTask.push(res.data.data);
+      setAllTask([...allTask]);
+    });
   }
 
-  const changeCheckbox = (id) => {
-    allTask[id].isCheck = !allTask[id].isCheck;
-    sortAllTask();
-    setAllTask([...allTask]);
+  const changeCheckbox = async (item) => {
+    await axios.patch(`http://localhost:8000/updateTask?id=${item._id}`, {
+      isCheck: !item.isCheck
+    }).then(res => {
+      res.data.data.sort((a, b) => a.isCheck > b.isCheck ? 1 : a.isCheck < b.isCheck ? -1 : 0);
+      setAllTask(res.data.data);
+    });
   }
 
-  const sortAllTask = () => allTask.sort((a, b) => a.isCheck > b.isCheck ? 1 : a.isCheck < b.isCheck ? -1 : 0);
-
-  const deleteTask = (index) => {
-    allTask.splice(index, 1);
-    setAllTask([...allTask]);
+  const deleteTask = async (item) => {
+    await axios.delete(`http://localhost:8000/deleteTask?id=${item._id}`).then(res => {
+      setAllTask(res.data.data);
+    });
   }
 
-  const saveEditing = (value, index) => {
-    allTask[index].task = value;
-    setAllTask([...allTask]);
+  const saveEditing = async (value, index, item) => {
+    await axios.patch(`http://localhost:8000/updateTask?id=${item._id}`, {
+      text: value
+    }).then(res => {
+      setAllTask(res.data.data);
+    });
   }
   
-  return (
+   return (
     <div className="container">
       <div className="add-task">
-        <input className="input-task" onChange={(e) => changeInput(e)} value={input} />
+        <input className="input-task" value={input}  onChange={(e) => setInput(e.target.value)} />
         <button className="btn-task" onClick={() => addButton()}>Добавить</button>
       </div>
       {allTask.map((item, index) => <Task 

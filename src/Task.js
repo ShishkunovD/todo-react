@@ -5,9 +5,9 @@ import basket from './basket.svg';
 import pancel from './pancel.png';
 
 const Task = ({item, changeCheckbox, index, deleteTask, saveEditing}) => {
-  const { task, isCheck } = item;
+  const { text, isCheck } = item;
   const [changeState, setChangeState] = useState(false);
-  const [editInput, setEditInput] = useState(task);
+  const [editInput, setEditInput] = useState(text);
 
   const changeInput = (e) => {
     setEditInput(e.target.value);
@@ -22,7 +22,7 @@ const Task = ({item, changeCheckbox, index, deleteTask, saveEditing}) => {
   }
 
   const renderSave = () => {
-    saveEditing(editInput, index);
+    saveEditing(editInput, index, item);
     setChangeState(!changeState);
   }
   
@@ -37,6 +37,7 @@ const Task = ({item, changeCheckbox, index, deleteTask, saveEditing}) => {
           renderSave={renderSave}
           editInput={editInput} 
           index={index}
+          item={item}
         />
       }
 
@@ -44,8 +45,9 @@ const Task = ({item, changeCheckbox, index, deleteTask, saveEditing}) => {
         <Main 
           isCheck={isCheck}
           changeCheckbox={changeCheckbox}
+          item={item}
           index={index}
-          task={task}
+          text={text}
           pancel={pancel}
           editTask={editTask}
         />
@@ -56,7 +58,7 @@ const Task = ({item, changeCheckbox, index, deleteTask, saveEditing}) => {
           src={basket}
           className="basket"
           alt="basket"
-          onClick={ () => deleteTask(index) }
+          onClick={ () => deleteTask(item) }
         />
       </span>
     </div>
