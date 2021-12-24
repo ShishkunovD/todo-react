@@ -1,0 +1,64 @@
+@media screen and (max-width: 840px) {
+  .task-container {
+    width: 73%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main-container {
+    width: 92%;
+  }
+
+  .task-container {
+    width: 75%;
+  }
+
+  .edit-conatiner {
+    display: flex;
+    flex-direction: column;
+    height: 120px;
+  }
+  
+  .inputEditing {
+    width: 95%;
+    height: 32px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .left-block {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .add-task {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-task {
+    width: 100%
+  }
+
+  .btn-task {
+    margin-right: auto;
+    margin-top: 15px;
+  }
+
+  .task-container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .main-container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .main-container {
+    width: 85%;
+  }
+}

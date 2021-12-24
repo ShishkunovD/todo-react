@@ -1,5 +1,5 @@
 .container {
-  width: 80%;
+  width: 95%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,13 +21,16 @@
 
 .input-task {
   width: 63%;
-  height: 40px;
+  height: 30px;
 }
 
 .btn-task {
-  height: 25px;
+  height: 37px;
   width: 100px;
   color: white;
+  border: 1px solid rgb(23, 23, 214);
+  border-radius: 5px;
+  cursor: pointer;
   background-color: rgb(23, 23, 214);
 }
 
@@ -46,6 +49,12 @@
 
 .edit-conatiner {
   display: flex;
+  justify-content: space-between;
+  width: 70%
+}
+
+.inputEditing {
+  width: 45%;
 }
 
 .basket, .pancel {
@@ -59,4 +68,29 @@
 
 .hide {
   display: none;
+}
+
+.left-block {
+  width: 350px;
+  word-wrap: break-word;
+}
+
+.cancelButton {
+  width: 80px;
+  height: 32px;
+  background-color: red;
+  border-color: red;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.btnSave {
+  width: 80px;
+  height: 32px;
+  background-color: rgb(23, 23, 214);
+  border-color: rgb(23, 23, 214);
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
 }

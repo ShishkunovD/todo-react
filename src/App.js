@@ -1,4 +1,5 @@
 import './App.css';
+import './App-media.css';
 import React, { useEffect, useState } from 'react';
 import Task from './Task';
 import axios from 'axios';
@@ -14,14 +15,18 @@ const App = () => {
   }, [])
 
   const addButton = async () => {
-    await axios.post('http://localhost:8000/createTask', {
-      text: input,
-      isCheck: false
-    }).then(res => {
-      setInput('');
-      allTask.push(res.data.data);
-      setAllTask([...allTask]);
-    });
+    if(input.length === 0) {
+      alert('Please, enter value.');
+    } else {
+      await axios.post('http://localhost:8000/createTask', {
+        text: input.trim(),
+        isCheck: false
+      }).then(res => {
+        setInput('');
+        allTask.push(res.data.data);
+        setAllTask([...allTask]);
+      });
+    }
   }
 
   const changeCheckbox = async (item) => {
@@ -45,7 +50,7 @@ const App = () => {
       setAllTask(res.data.data);
     });
   }
-  
+
   allTask.sort((a, b) => a.isCheck > b.isCheck ? 1 : a.isCheck < b.isCheck ? -1 : 0);
    return (
     <div className="container">
@@ -59,7 +64,8 @@ const App = () => {
         item={item} 
         deleteTask={deleteTask} 
         changeCheckbox={changeCheckbox} 
-        saveEditing={saveEditing}/>
+        saveEditing={saveEditing}
+        />
       )
       }
     </div>
