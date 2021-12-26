@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import basket from './basket.svg';
+import pancel from './pancel.png';
 
-const Main = ({isCheck, changeCheckbox, index, text, pancel, editTask, item, goToTask}) => {
+const Main = ({changeCheckbox, index, item, deleteTask, goToTask}) => {
+  const { text, isCheck} = item;
+
   return(
     <div className="main-container">
     <div className="left-block">
@@ -13,10 +17,18 @@ const Main = ({isCheck, changeCheckbox, index, text, pancel, editTask, item, goT
           src={pancel}
           className="pancel"
           alt="pancel"
-          onClick={() => {editTask(index); goToTask(item._id)}} 
+          onClick={() => goToTask(index)} 
         />
       </Link>
     </span>
+    <span>
+        <img
+          src={basket}
+          className="basket"
+          alt="basket"
+          onClick={ () => deleteTask(item) }
+        />
+      </span>
   </div>
   )
 }

@@ -45,12 +45,14 @@
   width: 95%;
   display: flex;
   justify-content: space-between;
+  margin-top: 15px;
 }
 
 .edit-conatiner {
   display: flex;
   justify-content: space-between;
-  width: 70%
+  width: 70%;
+  margin-top: 10px;
 }
 
 .inputEditing {
@@ -60,6 +62,10 @@
 .basket, .pancel {
   width: 16px;
   height: 16px;
+}
+
+.pancel {
+  margin-right: 10px;
 }
 
 .wrapper {
@@ -73,6 +79,7 @@
 .left-block {
   width: 350px;
   word-wrap: break-word;
+  margin-right: auto;
 }
 
 .cancelButton {

@@ -16,7 +16,7 @@
   .edit-conatiner {
     display: flex;
     flex-direction: column;
-    height: 120px;
+    height: 150px;
   }
   
   .inputEditing {
