@@ -1,7 +1,7 @@
-import './App.css';
-import './App-media.css';
+import '../style/App.css';
+import '../style/App-media.css';
 import React, { useEffect, useState } from 'react';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import { Switch, Route, useHistory, Redirect } from 'react-router-dom';
 import Tasks from './Tasks';
 import Edit from './Edit';
 import axios from 'axios';
@@ -91,6 +91,7 @@ const App = () => {
               deleteTask={deleteTask}
             />
           </Route>
+          <Redirect from='/' to='/main' />
         </Switch>
       </div>
     </>

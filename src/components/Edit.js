@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import basket from './basket.svg';
+import basket from '../source/images/basket.svg';
 
 const Edit = ({currentTask, saveEditing, deleteTask}) => {
   const [editInput, setEditInput] = useState(currentTask.text);
