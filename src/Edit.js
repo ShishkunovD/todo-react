@@ -10,15 +10,22 @@ const Edit = ({currentTask, saveEditing, deleteTask}) => {
   }
 
   return (
-  <div className="edit-conatiner" >
-    <Link to="/main">
-      <button  className="cancelButton">Отмена</button>
-    </Link>
-    <input onChange={(e) => changeInput(e)} value={editInput} className="inputEditing"/>
-    <Link to="/main">
-      <button onClick={() => saveEditing(currentTask, editInput)} className="btnSave">Сохранить</button>
-    </Link>
-    <span className='basket-span'>
+    <div className="edit-conatiner" >
+      <Link to="/main">
+        <button  className="cancelButton">Отмена</button>
+      </Link>
+      <input 
+        onChange={(e) => changeInput(e)}
+        value={editInput}
+        className="inputEditing"
+      />
+      <Link to="/main">
+        <button
+          onClick={() => saveEditing(currentTask, editInput)}
+          className="btnSave">Сохранить
+        </button>
+      </Link>
+      <span className='basket-span'>
         <img
           src={basket}
           className="basket"
@@ -26,7 +33,7 @@ const Edit = ({currentTask, saveEditing, deleteTask}) => {
           onClick={ () => deleteTask(currentTask) }
         />
       </span>
-  </div>
+    </div>
   )
 }
 
