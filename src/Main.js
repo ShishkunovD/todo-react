@@ -11,15 +11,15 @@ const Main = ({changeCheckbox, index, item, deleteTask, goToTask}) => {
       <input type="checkbox" checked={isCheck} onChange={() => changeCheckbox(item)}/>
       <span className={isCheck ? 'throught task': 'task'}>{text}</span>
     </div>
-    <span>
-      <Link to="/edit/:id">
+    <span className={isCheck ? 'hide' : 'pancel-span'}>
+      {<Link to={`/edit/:${item._id}`}>
         <img 
           src={pancel}
           className="pancel"
           alt="pancel"
           onClick={() => goToTask(index)} 
         />
-      </Link>
+      </Link>}
     </span>
     <span>
         <img

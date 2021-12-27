@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Playfair+Display&family=Raleway:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption&display=swap');
+
+body {
+  background-color:  #D1D1E5;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Playfair Display', serif;
+  font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
 .container {
   width: 95%;
   display: flex;
@@ -17,20 +32,38 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 25px;
+  height: 40px;
 }
 
 .input-task {
   width: 63%;
   height: 30px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
 }
 
 .btn-task {
   height: 37px;
   width: 100px;
-  color: white;
-  border: 1px solid rgb(23, 23, 214);
+  color: rgb(23, 23, 214);
+  border: 1px solid white;
   border-radius: 5px;
   cursor: pointer;
+  background-color: white;
+  font-family: 'PT Sans Caption', sans-serif;
+}
+
+.btn-task:hover {
+  color: white;
+  border: 1px solid rgb(23, 23, 214);
   background-color: rgb(23, 23, 214);
 }
 
@@ -42,7 +75,7 @@
 }
 
 .main-container {
-  width: 95%;
+  width: 69%;
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
@@ -51,21 +84,32 @@
 .edit-conatiner {
   display: flex;
   justify-content: space-between;
-  width: 70%;
+  width: 68%;
   margin-top: 10px;
 }
 
 .inputEditing {
   width: 45%;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+}
+
+.basket-span {
+  display: flex;
+  align-items: center;
 }
 
 .basket, .pancel {
   width: 16px;
   height: 16px;
-}
-
-.pancel {
-  margin-right: 10px;
+  cursor: pointer;
 }
 
 .wrapper {
@@ -85,19 +129,38 @@
 .cancelButton {
   width: 80px;
   height: 32px;
-  background-color: red;
-  border-color: red;
+  background-color: white;
+  border-color: white;
   border-radius: 5px;
   cursor: pointer;
+  color: red;
+  font-family: 'PT Sans Caption', sans-serif;
+}
+
+.cancelButton:hover {
+  background-color: red;
+  border-color: red;
   color: white;
 }
 
 .btnSave {
-  width: 80px;
+  width: 82px;
   height: 32px;
-  background-color: rgb(23, 23, 214);
-  border-color: rgb(23, 23, 214);
+  background-color: white;
+  border-color: white;
   border-radius: 5px;
   cursor: pointer;
+  color: rgb(23, 23, 214);
+  font-family: 'PT Sans Caption', sans-serif;
+}
+
+.btnSave:hover {
+  background-color: rgb(23, 23, 214);
+  border-color: rgb(23, 23, 214);
   color: white;
+}
+
+.pancel-span {
+  width: 16px;
+  margin-right: 10px; 
 }

@@ -19,11 +19,11 @@ const App = () => {
   }, [])
 
   const addButton = async () => {
-    if(input.length === 0) {
+    if(input.trim().length === 0) {
       alert('Please, enter value.');
     } else {
       await axios.post('http://localhost:8000/createTask', {
-        text: input.trim(),
+        text: input,
         isCheck: false
       }).then(res => {
         setInput('');
@@ -63,20 +63,23 @@ const App = () => {
 
   allTask.sort((a, b) => a.isCheck > b.isCheck ? 1 : a.isCheck < b.isCheck ? -1 : 0);
    return (
+     <>
+     <h1>Todo list</h1>
     <div className="container">
       <div className="add-task">
-        <input className="input-task" value={input}  onChange={(e) => setInput(e.target.value)} />
+        <input className="input-task" value={input} placeholder='Введите значение..'  onChange={(e) => setInput(e.target.value)} />
         <button className="btn-task" onClick={() => addButton()}>Добавить</button>
       </div>
       <Switch>
         <Route path='/main'>
           <Tasks allTask={allTask} deleteTask={deleteTask} changeCheckbox={changeCheckbox} goToTask={goToTask}/>
         </Route>
-      {<Route path='/edit/:id'>
+      {<Route path={`/edit/:id`}>
         <Edit currentTask={currentTask} saveEditing={saveEditing} deleteTask={deleteTask}/>
       </Route>}
       </Switch>
     </div>
+    </>
   );
 }
 

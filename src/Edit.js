@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import basket from './basket.svg';
 
-const Edit = ({currentTask, cancelEditing, saveEditing, renderSave, allTask, deleteTask}) => {
+const Edit = ({currentTask, saveEditing, deleteTask}) => {
   const [editInput, setEditInput] = useState(currentTask.text);
 
   const changeInput = (e) => {
@@ -18,7 +18,7 @@ const Edit = ({currentTask, cancelEditing, saveEditing, renderSave, allTask, del
     <Link to="/main">
       <button onClick={() => saveEditing(currentTask, editInput)} className="btnSave">Сохранить</button>
     </Link>
-    <span>
+    <span className='basket-span'>
         <img
           src={basket}
           className="basket"
