@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import basket from './basket.svg';
-import pancel from './pancel.png';
+import basket from '../source/images/basket.svg';
+import pancel from '../source/images/pancel.png';
 
 const Main = ({changeCheckbox, index, item, deleteTask, goToTask}) => {
   const { text, isCheck } = item;
@@ -16,14 +16,12 @@ const Main = ({changeCheckbox, index, item, deleteTask, goToTask}) => {
         <span className={isCheck ? 'throught task': 'task'}>{text}</span>
       </div>
       <span className={isCheck ? 'hide' : 'pancel-span'}>
-        {<Link to={`/edit/:${item._id}`}>
           <img 
             src={pancel}
             className="pancel"
             alt="pancel"
             onClick={() => goToTask(index)} 
           />
-        </Link>}
       </span>
       <span>
         <img
